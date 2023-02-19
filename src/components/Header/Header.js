@@ -8,7 +8,7 @@ const Header = () => {
                
                 <div className="carousel-item relative w-full relative ">
                     <img width="100%" className='z-0' height="400px" src={img} alt="Burger" />
-                <div className="absolute top-0 left-0 "><button className="btn bg-buttonBg text-white z-10 ">Edit</button></div>
+                <div className="absolute top-0 left-0 "><button className="btn bg-teal-400 text-white z-10 ">Edit</button></div>
                 </div>
                 
             </div>
