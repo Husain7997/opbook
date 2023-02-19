@@ -12,11 +12,11 @@ import './Home.css'
 const Home = () => {
   return (
     <div >
-     <Navbar></Navbar>
+    
      <Header></Header>
      <Form></Form>
      <Posts></Posts>
-   <Footer></Footer>
+
     </div>
   )
 }
