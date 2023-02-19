@@ -1,17 +1,16 @@
 import './App.css';
+import React from 'react';
+
+import Home from './pages/home/Home';
 
 function App() {
   return (
-    <div className="App">
-      <h2>Husain Ahmed</h2>
+ <div className="App">
+<div className="blur" style={{top:'-18%', right:'0'}}></div>
+<div className="blur" style={{top:'36%', left:'-8rem'}}></div>
 
-      <button className="btn">Button</button>
-<button className="btn btn-primary">Button</button>
-<button className="btn btn-secondary">Button</button>
-<button className="btn btn-accent">Button</button>
-<button className="btn btn-ghost">Button</button>
-<button className="btn btn-link">Button</button>
-    </div>
+<Home></Home>
+ </div>
   );
 }
 
