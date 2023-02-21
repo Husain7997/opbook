@@ -8,7 +8,7 @@ import { AuthContext } from '../../Context/ContextProvider/AuthProvider';
 
 const Login = () => {
     const { logIn , googleSignIn} = useContext(AuthContext);
-    // const [loginError, setLoginError] = useState('');
+    const [loginError, setLoginError] = useState('');
     // const location = useLocation();
     const [loginUserEmail, setLoginUserEmail] = useState('');
     // const [token]=useToken(loginUserEmail);
@@ -20,7 +20,7 @@ const Login = () => {
 // // }
     const { register, formState: { errors }, handleSubmit } = useForm();
     const handleLogin = data => {
-        // setLoginError('');
+        setLoginError('');
         console.log(data);
         logIn(data.email, data.password)
             .then(result => {
@@ -75,7 +75,7 @@ const Login = () => {
                             }
                         </div> */}
                         <div className="form-control mt-6">
-                            {/* {errors.email && <p className='text-red-600'>{errors?.email?.message}</p>}
+                            {/* {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                             {errors.password && <p className='text-red-600'>{errors?.password?.message}</p>} */}
                             <button type="submit" className="btn btn-primary">Login</button>
                         </div>

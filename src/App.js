@@ -3,6 +3,7 @@ import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 
 import router from './Routes/Router.js/Router';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -11,8 +12,8 @@ function App() {
 <div className="blur" style={{top:'36%', left:'-8rem'}}></div>
 <RouterProvider router={router}>
   
+<Toaster />  
 </RouterProvider>
-      
 
  </div>
   );

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/ContextProvider/AuthProvider';
 
 const Navbar = () => {
+  const {user}=(useContext(AuthContext));
+  console.log(user);
     return (
         <div className="navbar bg-base-100">
         <div className="navbar-start">
@@ -24,27 +27,21 @@ const Navbar = () => {
               <li><a>Item 3</a></li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">opbook</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <Link to='/login'><a>Login</a></Link>
-            <li tabIndex={0}>
-              <a>
-                Parent
-                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-              </a>
-              <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </li>
-            <li><a>Item 3</a></li>
+            <>
+       <li><Link to='/'>Home</Link></li>
+      <li><Link to='/services'>Services</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li></>
+       
+       <li><Link to='/login'>{user.email}</Link></li>
           </ul>
         </div>
         <div className="navbar-end">
         <div className="w-10 rounded-full">
-          <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <img src={user.photoURL} />
         </div>
         </div>
       </div>
