@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Context/ContextProvider/AuthProvider';
 // import { toast } from 'react-hot-toast';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { toast, Toaster } from 'react-hot-toast';
 // import UseToken from '../../Components/hooks/useToken';
 
 
 const Register = () => {
-    const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
+    const { createUser,user, updateUser, googleSignIn } = useContext(AuthContext);
     // const [registerError, setRegisterError] = useState('')
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -24,19 +25,20 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // toast('user create Successfully.')
-                // const userInfo = {
-                //     displayName: data.name
-                // }
+                saveUser(data.name, data.email)
+                Toaster('user create Successfully.')
+                const userInfo = {
+                    displayName: data.name
+                }
+                
+                updateUser(userInfo)
+                    .then(() => {
+                       
 
-                // updateUser(userInfo)
-                //     .then(() => {
-                //         saveUser(data.name, data.email)
-
-                //     })
-                //     .catch(err => {
-                //         console.log(err)
-                //     });
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    });
 
 
             })
@@ -45,22 +47,22 @@ const Register = () => {
                 // setRegisterError(err.message)
             })
     }
-    // const saveUser = (name, email) => {
-    //     const user = { name, email };
-    //     console.log(user);
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user),
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setCreatedUserEmail(email)
-    //         });
-    // }
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        console.log(user);
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCreatedUserEmail(email)
+            });
+    }
 
     // const getUserToken = email => {
     //     fetch(`http://localhost:5000/jwt?email=${email}`)
