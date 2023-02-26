@@ -34,7 +34,6 @@ const Register = () => {
                 updateUser(userInfo)
                     .then(() => {
                        
-
                     })
                     .catch(err => {
                         console.log(err)
